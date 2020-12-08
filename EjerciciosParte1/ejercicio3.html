@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio3</title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+	<header>
+		<section id="menu">
+			<ul>
+				<a href="index.html">Inicio</a>
+				<a href="ejercicio1.html">Ejercicio 1</a>
+				<a href="ejercicio2.html">Ejercicio 2</a>
+				<a href="ejercicio3.html">Ejercicio 3</a>
+				<a href="ejercicio4.html">Ejercicio 4</a>
+			</ul>
+		</section>
+	</header>
+	
+	<script type="text/javascript">
+		function validate(p,h){
+			var p=parseFloat(document.getElementById("pago").value);
+			var h=parseFloat(document.getElementById("horas").value);
+
+			if(p<12.8){
+				alert("No se aceptan salarios de menos de $12.8 (Salario minimo)");
+				return false;
+			}else if(p>100000000){
+				alert("No se aceptan cantidades mayores a $100000000");
+				return false;
+			}else if(h<40){
+				alert("No se aceptan menos de 40 horas");
+				return false;
+			}else if(h>60){
+				alert("No se aceptan mas de 60 horas")
+				return false;
+			}else{
+				return true;
+			}
+        }
+
+		function calcular(){
+			var p=parseFloat(document.getElementById("pago").value);
+			var h=parseFloat(document.getElementById("horas").value);
+
+			if(validate(p,h)==true){
+				if(h<=48 && p>=12.8){
+					to=h-40;
+					ht=40*p;
+					he=to*(p*2);
+					total=ht+he;
+					document.getElementById("result").innerHTML="El total es de $"+total+".";
+				}else if(h>48 && p>=12.8){
+					hnormales=(40*p);
+					hextra1=(8*(p*2));
+					numhorasextra2=(h-48);
+					hextra2=(numhorasextra2*(p*3))
+					total=hextra2+hextra1+hnormales;
+					document.getElementById("result").innerHTML="El total es de $"+total+".";
+				}else{
+					document.getElementById("result").innerHTML="Ingresa una cantidad valida porfavor";				
+				}
+			}else{
+				document.getElementById("result").innerHTML="Ingresa una cantidad valida porfavor";
+			}
+    	}
+	</script>
+
+	<div class="container3">
+		<form>
+			<h1>Calcula tu pago</h1>
+			<br>
+			<h4>Ingresa tu pago por hora</h4>
+			<input type="number" name="pago" id="pago">
+			<h4>Ingresa tu numero de horas trabajadas</h4>
+			<input type="number" name="horas" id="horas">
+
+			<input type="button" id="boton" value="Calcular" onclick="javascript:calcular();" />
+            <div id="result"></div>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio2</title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+<body>
+	<header>
+		<section id="menu">
+			<ul>
+				<a href="index.html">Inicio</a>
+				<a href="ejercicio1.html">Ejercicio 1</a>
+				<a href="ejercicio2.html">Ejercicio 2</a>
+				<a href="ejercicio3.html">Ejercicio 3</a>
+				<a href="ejercicio4.html">Ejercicio 4</a>
+			</ul>
+		</section>
+	</header>
+	
+	<script type="text/javascript">
+		function validate(one,two,three){
+			var one=parseFloat(document.getElementById("first").value);
+			var two=parseFloat(document.getElementById("second").value);
+			var three=parseFloat(document.getElementById("third").value);
+
+  				if(one<-1000000000000 | two<-1000000000000){
+	  				alert("No se aceptan numeros tan diminutos");
+	  				return false;
+	  			}else if (three<-1000000000000){
+	  				alert("No se aceptan numeros tan diminutos");
+	  				return false;
+	  			}else if (three>1000000000000){
+	  				alert("No se aceptan numeros tan grandes");
+	  				return false;
+	  			}else if (one>1000000000000 | two>1000000000000){
+	  				alert("No se aceptan numeros tan grandes");
+	  				return false;
+	  			}else if (three==two){
+	  				alert("No se aceptan numeros repetidos");
+	  				return false;
+	  			}else if (one==two | one==three){
+	  				alert("No se aceptan numeros repetidos");
+	  				return false;
+	  			}else{
+	  				return true;
+	  			}				
+        }
+
+		function calcular(){
+			var one=parseFloat(document.getElementById("first").value);
+			var two=parseFloat(document.getElementById("second").value);
+			var three=parseFloat(document.getElementById("third").value);
+
+			if(validate(one,two,three)==true){
+				
+				if(one>two && one>three){
+					document.getElementById("result").innerHTML="El mayor es "+one+".";
+				}else if(two>one && two>three){
+					document.getElementById("result").innerHTML="El mayor es "+two+".";
+				}else if(three>one && three>two){
+					document.getElementById("result").innerHTML="El mayor es "+three+".";
+				}else{
+					document.getElementById("result").innerHTML="Ingresa una cantidad valida porfavor";
+				}
+			}else{
+				document.getElementById("result").innerHTML="Ingresa una cantidad valida porfavor";
+			}
+    	}
+	</script>
+
+
+	<div class="container2">
+		<form>
+			<h1>¿Cual es el mayor?</h1>
+			<br>
+			<h4>Ingresa el primer número</h4>
+			<input type="number" name="first" id="first">
+			<h4>Ingresa el segundo número</h4>
+			<input type="number" name="second" id="second">
+			<h4>Ingresa el tercer número</h4>
+			<input type="number" name="third" id="third">
+
+			<input type="button" id="boton" value="Calcular" onclick="javascript:calcular();" />
+            <div id="result"></div>
+		</form>
+	</div>
+
+</body>
+</html>
